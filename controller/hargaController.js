@@ -116,7 +116,7 @@ function populateChart(data){
 
     var value = [];
     var valueTmp = 0;
-    for(var i=firstDate;i<day;i++){
+    for(var i=firstDate;i<=day;i++){
         if(typeof data.series[i] != 'undefined'){
             value.push(data.series[i]);
             valueTmp = data.series[i];
