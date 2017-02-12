@@ -1,0 +1,54 @@
+<% layout('layout') -%>
+
+
+<% block('title', 'Daftar Harga Info Pangan | Grid') -%><br>
+
+<% block('menu', 'Daftar Harga Info Pangan | Grid') -%><br>
+
+<ul class="grid-list">
+    <% prices.forEach(function(price){ %>
+    <a href="/comodity/detail/graph?cm=<%= price.commodity_id  %>&name=<%= decodeURI(price.name) %>">
+        <li class="grid-item">
+        <div class="box box-solid grid">
+            <div class="box-header with-border">
+                <h3 class="box-title"><%= price.name %></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <div class="col-md-6">
+                    <img src="<%= price.image_url %>"/>
+                </div>
+                <div class="col-md-6">
+                    <h3><%= price.price_compare %>/<%= price.unit %></h3>
+                    <% if(price.price_compare > price.price){ %>
+                        <span class="label label-success"><span class='glyphicon glyphicon-chevron-up'></span> <%= price.changed%></span>
+                    <% }else if(price.price_compare < price.price){ %>
+                        <span class="label label-danger"><span class='glyphicon glyphicon-chevron-down'></span> <%= price.changed%></span>
+                    <% }else{ %>
+                        <span class="label label-info"><strong>=</strong></span>
+                    <% } %>
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+        </div>
+        </li>
+    </a>
+    <% }) %>
+</ul>
+
+<div class="btn-toolbar" role="toolbar" aria-label="...">
+    <div class="btn-group" role="group" aria-label="...">
+        <% for(var i=1; i < maxPage; i++) { %>
+            <% if(page==i){ %>
+                <a href="#"><button type="button" class="btn btn-primary active"><%= i %></button></a>
+            <% }else{ %>
+                <a href="<%= i %>"><button type="button" class="btn btn-default"><%= i %></button></a>
+            <% } %>
+        <% } %>
+    </div>
+</div>
+
+
+

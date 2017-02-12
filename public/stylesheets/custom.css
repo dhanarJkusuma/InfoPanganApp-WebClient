@@ -1,0 +1,27 @@
+.grid{
+    width:273px;
+}
+
+.grid-list{
+    list-style-type: none;
+
+}
+
+.grid-list li {
+    margin: 0px 5px;
+    display: inline-block;
+}
+
+.item-list{
+    list-style-type: none;
+
+}
+
+.item-list li {
+    margin: 0px 5px;
+    display: block;
+}
+
+.single-list{
+    padding:10px;
+}

@@ -1,0 +1,31 @@
+<% layout('layout') -%>
+
+
+<% block('title', 'Grafik info harga pangan dalam 7 hari terakhir') -%><br>
+
+<% block('menu', 'Grafik info harga pangan dalam 7 hari terakhir') -%><br>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Grafik komoditi <%= name %></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="areaChart" style="height:300px;width: 500px;"></canvas>
+                </div>
+
+            </div>
+            <!-- /.box-body -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

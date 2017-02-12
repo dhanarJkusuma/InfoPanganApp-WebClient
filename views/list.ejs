@@ -1,0 +1,47 @@
+<% layout('layout') -%>
+
+
+<% block('title', 'Daftar Harga Info Pangan | List') -%><br>
+
+<% block('menu', 'Daftar Harga Info Pangan | List') -%><br>
+
+<ul class="item-list">
+    <% prices.forEach(function(price){ %>
+    <a href="/comodity/detail/graph?cm=<%= price.commodity_id  %>&name=<%= price.name %>">
+        <li class="list-item">
+            <div class="box box-solid single-list">
+                <div class="col-md-2">
+                    <img src="<%= price.image_url %>" align="center"/>
+                </div>
+                <div class="cold-md-10">
+                    <h3><%= price.name %></h3>
+                    <h5><%= price.price_compare %>/<%= price.unit %></h5>
+                    <% if(price.price_compare > price.price){ %>
+                    <span class="label label-success"><span class='glyphicon glyphicon-chevron-up'></span> <%= price.changed%></span>
+                    <% }else if(price.price_compare < price.price){ %>
+                    <span class="label label-danger"><span class='glyphicon glyphicon-chevron-down'></span> <%= price.changed%></span>
+                    <% }else{ %>
+                    <span class="label label-info"><strong>=</strong></span>
+                    <% } %>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </li>
+    </a>
+    <% }) %>
+</ul>
+
+<div class="btn-toolbar" role="toolbar" aria-label="...">
+    <div class="btn-group" role="group" aria-label="...">
+        <% for(var i=1; i < maxPage; i++) { %>
+        <% if(page==i){ %>
+        <a href="#"><button type="button" class="btn btn-primary active"><%= i %></button></a>
+        <% }else{ %>
+        <a href="<%= i %>"><button type="button" class="btn btn-default"><%= i %></button></a>
+        <% } %>
+        <% } %>
+    </div>
+</div>
+
+
+
