@@ -89,12 +89,18 @@ exports.getChart = function(req, res, next){
             value1 = populateChart(response.data.data[1]);
             value2 = populateChart(response.data.data[2]);
 
+            vname = response.data.data[0].name;
+            vname1 = response.data.data[1].name;
+            vname2 = response.data.data[2].name;
 
             res.render('chart', {
                 name : name,
                 dataChart : value,
                 dataChart1 : value1,
                 dataChart2 : value2,
+                vname : vname,
+                vname1 : vname1,
+                vname2 : vname2,
                 isChart: true,
                 menu : 'chart'
             });
