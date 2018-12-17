@@ -4,7 +4,7 @@
 var http = require('http');
 var axios = require('axios');
 
-const base_url = 'http://infopangan.jakarta.go.id/api';
+const base_url = 'https://infopangan.jakarta.go.id/api';
 
 
 exports.getGridData = function(req, res, next){
@@ -43,14 +43,16 @@ exports.getGridData = function(req, res, next){
 
 exports.getListData = function(req, res, next){
     var page = req.params.page;
+    console.log(base_url + '/price/lists')
     axios.get(base_url + '/price/lists')
         .then(function (response) {
+            //console.log(response.data);
             var resData = response.data;
             var prices = resData.data.prices;
-            console.log(prices);
+            //console.log(prices);
             var totalCount = prices.length;
             var totalPage = Math.round(prices.length/20);
-            console.log(totalPage);
+            //console.log(totalPage);
             var pagePages;
             if(page == 1 && page < totalPage){
                 pagePages = prices.slice(0, 20);
@@ -74,7 +76,8 @@ exports.getListData = function(req, res, next){
                 isChart: false,
                 menu : 'list'
             });
-        });
+        })
+        .catch(err => console.log(err));
 };
 
 exports.getChart = function(req, res, next){
